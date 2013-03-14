@@ -41,7 +41,7 @@ class TML {
 	public static function toArray($buf){
 		$lines = explode("\n",$buf);
 		//first line has to be the var name (root)
-		$varname = rtrim(trim(mda_shift($lines)));
+		$varname = rtrim(trim(array_shift($lines)));
 		if(empty($varname)) throw new Exception('Root missing, parse failed',ERR_TML_PARSE_FAILED);
 		$map = array();
 		if(self::lineParse($map,$lines))
@@ -51,7 +51,7 @@ class TML {
 
 	private static function lineParse(&$map,&$lines,$level=1){
 		$m = array();
-		while(($line = mda_shift($lines)) !== false){
+		while(($line = array_shift($lines)) !== false){
 			//try for name value first
 			if(preg_match("/^".TML_DELIMITER."{".$level."}(.+?)".TML_DELIMITER."+(.+?)$/",$line,$m)){
 				if($m[2] == "[]") $map[$m[1]] = array();
