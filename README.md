@@ -44,7 +44,7 @@ app
 Usage
 ----
 ```php
-ld('tml');
+use \LSS\TML
 
 //setup our test array
 $array = array('test'=>'test1','test2'=>'test3');
